@@ -18,3 +18,5 @@ We had a meeting with the design pattern's members to decide which design patter
 We had a full team meeting to discuss the remaining architecture work, especially the C4 diagrams and related explanations. We reviewed the different sections together, but we decided not to finalize the division immediately because we first wanted everyone to analyze the parts and see which areas each person preferred to work on.
 ## 20/05/2026
 We discussed how to finalize the division of the C4 architecture sections, since the diagrams needed to be prepared soon. I agreed to take Context level, while the team started assigning the remaining container , component and architecture sections.
+## 21/05/2026 
+I started studying the Context Level (C4 Level 1) and understanding what information should appear in the diagram. I began analyzing which Node.js files and components could help identify the external systems and users interacting with Node.js, while also reviewing how to structure the analysis for the report.
