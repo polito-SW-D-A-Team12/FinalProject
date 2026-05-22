@@ -14,5 +14,7 @@ Started going through the Observer and Strategy patterns from the material to un
 - **Understanding the Design Choice:** I mapped createHash() and the related Hash object pipeline as the Context, the algorithm parameter as the Strategy selector, and the OpenSSL-supported algorithms as the Concrete Strategies. I also worked on explaining why this pattern is useful: the developer can change the hashing behavior at runtime without changing the surrounding code. This made the API more flexible and avoids creating separate hardcoded functions for every possible hashing algorithm.
 ## 11/05/2026
 We had a meeting with the design pattern's members to decide which design patterns to keep for the final report, focusing on those with clearer Node.js code references. I confirmed that Observer and Strategy were suitable choices because they connect well to both the theory and the real implementation.
-## 13/05/20226
+## 13/05/2026
 We had a full team meeting to discuss the remaining architecture work, especially the C4 diagrams and related explanations. We reviewed the different sections together, but we decided not to finalize the division immediately because we first wanted everyone to analyze the parts and see which areas each person preferred to work on.
+## 20/05/2026
+We discussed how to finalize the division of the C4 architecture sections, since the diagrams needed to be prepared soon. I agreed to take Context level, while the team started assigning the remaining container , component and architecture sections.
