@@ -17,3 +17,9 @@ Code dependency extraction: Wrote a Python script that statically parses all req
 
 ## 04/05/2026- 06/05/2026
 Drafted the Dependencies section of the Design report. Connected findings to course concepts: change amplification, information hiding, deep vs. shallow modules, pulling complexity downwards, and information leakage.
+
+## 10/05/2026 - 12/05/2026
+Continued working on the Software Design part.
+
+## 22/05/2026 - 24/05/2026
+Started structuring the main ideas for the C4 architecture section. Reviewed the relationship between the Level 1, Level 2, and Level 3, and began drafting the final part of the architecture report.
