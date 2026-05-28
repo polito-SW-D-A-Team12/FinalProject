@@ -24,3 +24,8 @@ Our goal is to confirm if this approach satisfies the requirement of focusing on
 - Each subgroup explained the other what they have been doing for the past weeks and planned on doing a first complete version of the **Design Report** this weekend.
 - Talked about how to approach the **architecture part**.
 - Decided when to have the **C4 feedback** meeting with the professor.
+## 14/05 - 27/05
+- Been working on the **architecture** section. Investigated about the C4 diagrams and about Node.js. Manuel and I finally focused on the level 3 and architectural characteristics because I thought the dependencies analysis we made was going to be useful.
+- At the same time, analysed deeper some dependencies and redrafted the **dependencies** part of the design report.
+## 28/05
+- C4 feedback: had the meeting, where some key ideas were introduced such as incorporating the boundaries to the diagrams and it was also clarified that some containers can be discarded from level 3 if well explained and justified.
