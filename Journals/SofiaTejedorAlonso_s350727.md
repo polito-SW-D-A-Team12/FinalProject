@@ -29,3 +29,7 @@ Our goal is to confirm if this approach satisfies the requirement of focusing on
 - At the same time, analysed deeper some dependencies and redrafted the **dependencies** part of the design report.
 ## 28/05
 - C4 feedback: had the meeting, where some key ideas were introduced such as incorporating the boundaries to the diagrams and it was also clarified that some containers can be discarded from level 3 if well explained and justified.
+## 29/05 -31/05
+- **C4 more in depth study**: been investigating more in detail how C4 works by watching again the lecture where it was explained and visiting https://c4model.com/.
+- **Changes to C4 diagrams**: made changes to all 3 levels of the C4 model and drafted some explanations for the report.
+- **Pending tasks**: discuss with the rest of the group what they think about the new diagrams and finish the reports.
