@@ -21,3 +21,21 @@ Studied the design pattern slides. Identified 6 candidate patterns in Node.js (O
 # 08/05/2026
 
 Drafted the Decorator Pattern and Factory Method write- up for design pattern section of the Design report.
+
+# 11/05/2026
+
+Meeting with Sina and Kourosh (the design patterns sub-team) to decide which four patterns to include in the final design report. We compared all and selected Decorator, Observer, Template, and Strategy. We also reviewed each other's draft write-ups and gave feedback to finalize the design pattern section.
+
+# 13/05/2026
+
+Meeting with the whole group. Each subgroup explained what they have been doing for the past weeks and planned on doing a first complete version of the Design Report this weekend. Talked about how to approach the architecture part. Decided when to have the C4 feedback meeting with the professor.
+
+# 18/05/2026 - 27/05/2026
+
+Began working on my assigned section of the architecture report: C4 Level 2 Container Diagram. I started by investigating more in detail how C4 works by watching again the lecture where it was explained and visiting https://c4model.com/. I then read src/README.md and BUILDING.md in the Node.js repository to understand how the runtime components (V8, libuv, C++ bindings layer) connect to the JavaScript core. I also explored lib/internal/bootstrap/ to see how the runtime initializes and how internalBinding() bridges JavaScript to C++. Based on this, I built a C4 Level 2 Container Diagram in PlantUML using the C4-PlantUML library.
+
+# 28/05/2026
+C4 feedback meeting with the professor. I was absent because I was sick, but my teammates filled me in afterwards. Some key ideas were introduced such as incorporating the boundaries to the diagrams, keep naming consistent across C4 levels, write key responsibilities inside the container boxes rather than general descriptions.
+
+# 31/05/2026 - 01/06/2026
+Started making changes to my Level 2 Container Diagram based on the professor's feedback. Sofia then shared some changes she had made to the diagram. I looked through her version and noticed some good improvements, like adding the npm CLI as an external system and adding a "Bundled Native Libraries" container for the deps/ folder, which I had not included before. I incorporated these into my version and also removed Node-API as a separate container since it is really part of the C++ Bindings Layer.
