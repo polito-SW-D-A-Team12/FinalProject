@@ -4,23 +4,23 @@ We had a meeting to divide the project work among team members. I will be workin
 
 # 24/04/2026
 
-Studied the design pattern slides. Identified 6 candidate patterns in Node.js (Observer, Strategy, Decorator, Factory Method, Template Method, Singleton). Planned the work distribution for the design patterns sub-team - 2 patterns per person.
+Studied the design pattern slides. Started identifying patterns in Node.js. Planned the work distribution for the design patterns sub-team - 2 patterns per person.
 
-# 28/04/2026 – 30/04/2026
+# 28/04/2026 - 30/04/2026
 
-- **Decorator Pattern Investigation:** I started working on my first assigned pattern - the Decorator. I browsed the Node.js source at the v25.9.0 tag on GitHub, focusing on the streams subsystem. I read through [lib/internal/streams/transform.js](https://github.com/nodejs/node/blob/v25.9.0/lib/internal/streams/transform.js), [lib/stream.js](https://github.com/nodejs/node/blob/v25.9.0/lib/stream.js), and [lib/zlib.js](https://github.com/nodejs/node/blob/v25.9.0/lib/zlib.js) to understand how Transform streams work. What I found is that `Transform` extends `Duplex` (which itself combines Readable and Writable), and acts as a wrapper that adds behavior - like compression or encryption - without changing the stream interface. In `lib/zlib.js`, classes like `Gzip` and `Deflate` extend Transform to add specific compression logic. I started mapping these to the professor's UML roles: Stream as the Component, Readable/Writable as ConcreteComponents, Transform as the Decorator, and zlib.Gzip/Deflate as ConcreteDecorators. I also noticed that the real power of this pattern shows up when you chain streams with `.pipe()` - e.g., `readStream.pipe(gzip).pipe(encrypt).pipe(writeStream)` - each layer decorates the data flow independently.
+- **Decorator Pattern Investigation:** Started looking into the Decorator pattern in the streams subsystem. I read through transform.js, stream.js and zlib.js on GitHub at the v25.9.0 tag. The basic idea is that Transform extends Duplex and adds extra behavior (like compression) without changing the stream interface. Classes like Gzip and Deflate in zlib.js build on top of that. I mapped the classes to the UML roles from the lectures and started drafting the write-up.
 
 - **Factory Method - Initial Reading:** I also began looking into my second pattern - Factory Method. I opened [lib/http.js](https://github.com/nodejs/node/blob/v25.9.0/lib/http.js) and found the `createServer()` function, which simply returns `new Server(opts, requestListener)`.Still need to write this one up properly.
 
-- **Scope Discussion with Team:** Coordinated with the rest of the team about the scope concern. Since the full Node.js repository far exceeds the 100k LOC guideline, and our `lib/` folder sits at around 114k LOC, we discussed whether focusing exclusively on the JavaScript core is acceptable. The dependencies sub-team has also been working within `lib/`, so we are aligned. We plan to ask the professor to confirm that this approach satisfies the "smaller component" requirement analyzing patterns and dependencies within the JS layer.
+- **Scope Discussion with Team:** Coordinated with the rest of the team about the scope concern. Since the full Node.js repository far exceeds the 100k LOC guideline and our `lib/` folder sits at around 114k LOC, we discussed whether focusing exclusively on the JavaScript core is acceptable. The dependencies sub-team has also been working within `lib/`, so we are aligned. We plan to ask the professor to confirm that this approach satisfies the "smaller component" requirement analyzing patterns and dependencies within the JS layer.
 
 # 05/05/2026
 
-**Factory Method - Analysis:** For my second pattern, I looked into the Factory Method. I opened lib/http.js and found createServer() it just does return new Server(opts, requestListener). The Server class is imported from an internal module (\_http_server), so the user never deals with that directly. I then checked lib/net.js and lib/fs.js and found the exact same structure: net.createServer() at wraps new Server(), and fs.createReadStream() wraps new ReadStream() (it also calls lazyLoadStreams() for some internal setup before creating the object). I mapped these to the GoF roles: the modules (http, net, fs) are the Creators, the create\*() functions are the Factory Methods, and the returned objects like http.Server and fs.ReadStream are the ConcreteProducts. The main reason this pattern is useful here is that it hides constructor details from the user - if Node.js changes how a Server is built internally, code using createServer() still works.
+**Factory Method - Analysis:**Looked into Factory Method as my second pattern. Found it in lib/http.js where createServer() just returns new Server(opts, requestListener) with the Server class imported from an internal module. Same structure in net.js and fs.js — net.createServer() wraps new Server(), fs.createReadStream() wraps new ReadStream(). Mapped everything to the GoF roles and started drafting the write-up alongside the Decorator one.
 
 # 08/05/2026
 
-Drafted the Decorator Pattern and Factory Method write- up for design pattern section of the Design report.
+Drafted the Decorator Pattern and Factory Method write up for design pattern section of the Design report.
 
 # 11/05/2026
 
@@ -39,3 +39,12 @@ C4 feedback meeting with the professor. I was absent because I was sick, but my 
 
 # 31/05/2026 - 01/06/2026
 Started making changes to my Level 2 Container Diagram based on the professor's feedback. Sofia then shared some changes she had made to the diagram. I looked through her version and noticed some good improvements, like adding the npm CLI as an external system and adding a "Bundled Native Libraries" container for the deps/ folder, which I had not included before. I incorporated these into my version and also removed Node-API as a separate container since it is really part of the C++ Bindings Layer.
+
+# 07/06/2026
+Wrote the Level 2 container section for the architecture report. This covered the five containers how they relate to each other and the Clean Architecture comparison. Ran the word count a few times to make sure I stayed within budget.
+
+# 08/06/2026
+Went through the design report and made changes. Fixed some wording in my Decorator section and helped revise the summary at the end so it joins the dependency findings and the pattern findings together.
+
+# 09/06/2026
+Worked on the overview report. Checked the actual numbers from cloc and added the code statistics table with verified numbers from the v25.9.0 tag.
