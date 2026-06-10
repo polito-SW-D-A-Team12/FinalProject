@@ -48,3 +48,6 @@ Went through the design report and made changes. Fixed some wording in my Decora
 
 # 09/06/2026
 Worked on the overview report. Checked the actual numbers from cloc and added the code statistics table with verified numbers from the v25.9.0 tag.
+
+# 10/06/2026
+Checked and analysed the design report added one more design pattern which is a facade pattern as it is coherent with the depenendencies section. Checked the word count for all the files and finalised everything to push it on github.
