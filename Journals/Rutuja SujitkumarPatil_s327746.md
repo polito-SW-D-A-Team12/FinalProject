@@ -12,7 +12,7 @@ Studied the design pattern slides. Started identifying patterns in Node.js. Plan
 
 - **Factory Method - Initial Reading:** I also began looking into my second pattern - Factory Method. I opened [lib/http.js](https://github.com/nodejs/node/blob/v25.9.0/lib/http.js) and found the `createServer()` function, which simply returns `new Server(opts, requestListener)`.Still need to write this one up properly.
 
-- **Scope Discussion with Team:** Coordinated with the rest of the team about the scope concern. Since the full Node.js repository far exceeds the 100k LOC guideline and our `lib/` folder sits at around 114k LOC, we discussed whether focusing exclusively on the JavaScript core is acceptable. The dependencies sub-team has also been working within `lib/`, so we are aligned. We plan to ask the professor to confirm that this approach satisfies the "smaller component" requirement analyzing patterns and dependencies within the JS layer.
+- **Scope Discussion with Team:** Coordinated with the rest of the team about the scope concern. Since the full Node.js repository far exceeds the 100k LOC guideline and our `lib/` folder sits at around 114k LOC, we discussed whether focusing exclusively on the JavaScript core is acceptable. The dependencies sub-team has also been working within `lib/`, so we are aligned. We plan to ask the professor to confirm that this approach satisfies the requirement analyzing patterns and dependencies within the JS layer.
 
 # 05/05/2026
 
