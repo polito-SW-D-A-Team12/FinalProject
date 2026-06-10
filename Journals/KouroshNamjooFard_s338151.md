@@ -23,3 +23,6 @@ I started studying the Context Level (C4 Level 1) and understanding what informa
 ## 22/05/2026 - 27/05/2026 
 I worked on designing the C4 Level 1 System Context diagram for Node.js, focusing on showing the system from a high-level architectural perspective.
 I represented Node.js as one central runtime environment and connected it with the main external actors and systems, such as developers, the terminal, npm, the operating system, databases, APIs, and native addons.
+## 29/05/2026 - 01/06/2026
+After the feedback session, I reviewed my assigned parts again, especially the C4 Level 1 System Context diagram and its explanation.
+I focused on checking whether the diagram was clear, whether the abstraction level was correct, and how I could improve the written description to make my section more consistent
