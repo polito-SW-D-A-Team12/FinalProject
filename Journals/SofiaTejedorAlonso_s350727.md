@@ -29,7 +29,14 @@ Our goal is to confirm if this approach satisfies the requirement of focusing on
 - At the same time, analysed deeper some dependencies and redrafted the **dependencies** part of the design report.
 ## 28/05
 - C4 feedback: had the meeting, where some key ideas were introduced such as incorporating the boundaries to the diagrams and it was also clarified that some containers can be discarded from level 3 if well explained and justified.
-## 29/05 -31/05
+## 29/05 - 31/05
 - **C4 more in depth study**: been investigating more in detail how C4 works by watching again the lecture where it was explained and visiting https://c4model.com/.
 - **Changes to C4 diagrams**: made changes to all 3 levels of the C4 model and drafted some explanations for the report.
 - **Pending tasks**: discuss with the rest of the group what they think about the new diagrams and finish the reports.
+## 1/06 - 9/06
+- **C4 confirmation**: all the group agreed on using those diagrams. The final version uses them, with some changes in the key responsabilities mentioned for each diagram.
+- **Full review of the reports content**: went little by little in each section verifying the final content because after iterating that many times among different teammates sometimes incoherent content appears. Also contrasted again with the lectures notes to add some definitions and explanations.
+# 10/06
+**Submission day**
+- **Word limits confirmation**: confirmed all reports were inside the limits using the command given by the professor.
+- **GitHub push**: decided how to organise all the content we have developed along the differents folders, including a scripts section, as an Annex to explain how we developed the dependencies analysis.
