@@ -26,3 +26,5 @@ I represented Node.js as one central runtime environment and connected it with t
 ## 29/05/2026 - 01/06/2026
 After the feedback session, I reviewed my assigned parts again, especially the C4 Level 1 System Context diagram and its explanation.
 I focused on checking whether the diagram was clear, whether the abstraction level was correct, and how I could improve the written description to make my section more consistent
+## 07/06/2026 - 08/06/2026
+I reviewed the design patterns section again to make sure that my analysis of the Observer and Strategy patterns was clear, correct, and consistent for the final report.I checked the connection between the theoretical GoF roles and the real Node.js implementation, especially the references to EventEmitter, emit(), addListener(), and createHash().
