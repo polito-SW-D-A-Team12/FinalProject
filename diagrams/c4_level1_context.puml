@@ -1,0 +1,25 @@
+@startuml C4_L1_Context_NodeJS
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+title System Context diagram for Node.js
+
+Person_Ext(developer, "Application Developer", "Writes JavaScript code that runs on Node.js, installs and publishes packages via the npm CLI.")
+
+Enterprise_Boundary(openjs, "OpenJS Foundation") {
+    System(nodejs, "Node.js", "Cross-platform JavaScript runtime that executes JS outside the browser, providing APIs for I/O, networking, processes and module loading.")
+}
+
+System_Ext(npm_cli, "npm CLI", "Installs project dependencies and publishes packages by communicating with the npm Registry.")
+
+System_Ext(os, "Operating System", "Provides filesystem, networking, process and memory primitives that Node.js wraps and exposes to JavaScript.")
+
+Rel(developer, nodejs, "Writes JavaScript code that runs on (via the 'node' CLI)")
+Rel(developer, npm_cli, "Invokes to install packages and publish own packages")
+Rel(npm_cli, nodejs, "Runs on (npm CLI is itself a Node.js program)")
+Rel(nodejs, os, "Invokes system calls for I/O, networking and process management")
+
+caption L1 - C4 model Context diagram for Node.js. Shows Node.js as a system in its software ecosystem.
+
+@enduml
