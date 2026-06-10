@@ -16,7 +16,7 @@ Studied the design pattern slides. Started identifying patterns in Node.js. Plan
 
 # 05/05/2026
 
-**Factory Method - Analysis:**Looked into Factory Method as my second pattern. Found it in lib/http.js where createServer() just returns new Server(opts, requestListener) with the Server class imported from an internal module. Same structure in net.js and fs.js — net.createServer() wraps new Server(), fs.createReadStream() wraps new ReadStream(). Mapped everything to the GoF roles and started drafting the write-up alongside the Decorator one.
+-**Factory Method - Analysis:** Looked into Factory Method as my second pattern. Found it in lib/http.js where createServer() just returns new Server(opts, requestListener) with the Server class imported from an internal module. Same structure in net.js and fs.js — net.createServer() wraps new Server(), fs.createReadStream() wraps new ReadStream(). Mapped everything to the GoF roles and started drafting the write-up alongside the Decorator one.
 
 # 08/05/2026
 
