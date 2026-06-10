@@ -20,3 +20,6 @@ We had a full team meeting to discuss the remaining architecture work, especiall
 We discussed how to finalize the division of the C4 architecture sections, since the diagrams needed to be prepared soon. I agreed to take Context level, while the team started assigning the remaining container , component and architecture sections.
 ## 21/05/2026 
 I started studying the Context Level (C4 Level 1) and understanding what information should appear in the diagram. I began analyzing which Node.js files and components could help identify the external systems and users interacting with Node.js, while also reviewing how to structure the analysis for the report.
+## 22/05/2026 - 27/05/2026 
+I worked on designing the C4 Level 1 System Context diagram for Node.js, focusing on showing the system from a high-level architectural perspective.
+I represented Node.js as one central runtime environment and connected it with the main external actors and systems, such as developers, the terminal, npm, the operating system, databases, APIs, and native addons.
