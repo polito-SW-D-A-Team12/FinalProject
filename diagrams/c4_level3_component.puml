@@ -1,0 +1,62 @@
+@startuml C4_L3_Component_LibJS
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Component diagram — JavaScript Core Library (lib/)
+
+Person_Ext(developer, "Application Developer", "Writes JavaScript code that runs on Node.js.")
+
+System_Ext(npm_cli, "npm CLI", "Package manager. Itself a Node.js program.")
+
+Container_Boundary(lib, "JavaScript Core Library (lib/)") {
+
+  Component(bootstrap, "Process Bootstrap", "JavaScript (lib/internal/bootstrap/, lib/internal/process/)", "Initialises the runtime: sets up globals, configures warnings, primes the module loader. The 'node' CLI's entry point.")
+
+  Component(module_loader, "Module Loader", "JavaScript (lib/internal/modules/)", "Resolves and loads CommonJS and ES modules. Bridges the two module systems and handles caching, hooks and import.meta.")
+
+  Component(shared_infra, "Shared Infrastructure", "JavaScript (lib/internal/errors.js, util.js, validators.js, ...)", "Cross-cutting utilities depended on by ~half of lib/: error definitions, generic helpers, argument validators, type checks. Stable foundations of the codebase.")
+
+  Component(streams, "Streams", "JavaScript (lib/stream.js, lib/internal/streams/)", "Readable, writable, duplex and transform streams. Used by filesystem, HTTP, crypto, zlib and more.")
+
+  Component(events, "Events & Async Hooks", "JavaScript (lib/events.js, lib/internal/async_hooks.js)", "EventEmitter pattern and async-context tracking. Used pervasively to expose asynchronous APIs.")
+
+  Component(fs, "Filesystem", "JavaScript (lib/fs.js, lib/internal/fs/)", "Synchronous, callback and promise-based file I/O. Facade over the C++ filesystem bindings.")
+
+  Component(net_http, "Network & HTTP", "JavaScript (lib/net.js, http.js, http2.js, https.js, _http_*.js, lib/internal/http2/)", "TCP, IPC, HTTP/1, HTTP/2, HTTPS. Facade over libuv (sockets) and llhttp/nghttp2 (parsers).")
+
+  Component(crypto, "Crypto & TLS", "JavaScript (lib/crypto.js, lib/tls.js, lib/internal/crypto/)", "Hashing, ciphers, signatures, key management, post-quantum algorithms and TLS. Facade over OpenSSL.")
+
+  Component(test_runner, "Test Runner", "JavaScript (lib/test.js, lib/internal/test_runner/)", "Built-in test runner: harness, suites, reporters.")
+
+}
+
+Rel(developer, bootstrap, "Code loaded by, via the 'node' CLI")
+Rel(npm_cli, bootstrap, "Loaded by, when invoked")
+
+Rel(module_loader, shared_infra, "errors, validators, util")
+Rel(bootstrap, shared_infra, "errors, util")
+Rel(streams, shared_infra, "errors, validators")
+Rel(events, shared_infra, "errors, validators")
+Rel(fs, shared_infra, "errors, validators")
+Rel(net_http, shared_infra, "errors, validators")
+Rel(crypto, shared_infra, "errors, validators")
+Rel(test_runner, shared_infra, "errors, util")
+
+Rel(bootstrap, module_loader, "Initialises and configures")
+
+Rel(fs, streams, "Uses for file streams")
+Rel(net_http, streams, "Uses for socket/HTTP streams")
+Rel(net_http, events, "Emits connection / data events")
+Rel(crypto, streams, "Uses for cipher streams")
+Rel(test_runner, streams, "Uses for test output streams")
+Rel(test_runner, events, "Emits test events")
+Rel(fs, events, "Emits watcher events")
+
+note bottom of lib
+  All components call the C++ Bindings Layer (L2 container)
+  via internalBinding to reach V8, libuv and the bundled native libraries.
+end note
+
+caption C4 Model L3 - Component diagram for the JavaScript Core Library container. Groups files under lib/ by subsystem responsibility. 
+@enduml

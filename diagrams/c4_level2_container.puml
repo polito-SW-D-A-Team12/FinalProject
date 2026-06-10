@@ -1,0 +1,38 @@
+@startuml C4_L2_Container_NodeJS
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Container diagram for Node.js
+
+Person_Ext(developer, "Application Developer", "Writes JavaScript code that runs on Node.js, installs and publishes packages via the npm CLI.")
+
+System_Ext(npm_cli, "npm CLI", "Installs project dependencies and publishes packages by communicating with the npm Registry.")
+
+System_Ext(os, "Operating System", "Provides syscalls for filesystem, networking, processes and memory.")
+
+System_Boundary(nodejs, "Node.js") {
+  Container(lib, "JavaScript Core Library", "JavaScript (lib/)", "Public APIs (fs, net, http, ...) and internal subsystems (module loader, validators, error definitions) consumed by JavaScript code running on the runtime.")
+  Container(src, "C++ Bindings Layer", "C++ (src/)", "Bridges JavaScript and native components. Implements native functionality exposed to JS via internalBinding / N-API.")
+  Container(v8, "V8 Engine", "C++", "Parses, compiles (JIT) and executes JavaScript; manages memory and garbage collection.")
+  Container(libuv, "libuv", "C", "Cross-platform asynchronous I/O: event loop, thread pool, async file/network operations.")
+  Container(native_libs, "Bundled Native Libraries", "C / C++ (deps/)", "Native libraries linked into the binary that provide protocol and algorithm implementations: OpenSSL (TLS/crypto), llhttp (HTTP/1), nghttp2 (HTTP/2), and others.")
+}
+
+Rel(developer, lib, "Writes code that runs on (loaded by the 'node' CLI via the bindings layer)")
+
+Rel(developer, npm_cli, "Invokes to install packages and publish own packages")
+
+Rel(npm_cli, lib, "Runs on (npm CLI is itself a Node.js program)")
+
+Rel(lib, src, "Calls native functions via", "internalBinding")
+Rel(src, v8, "Embeds and drives", "V8 C++ API")
+Rel(src, libuv, "Drives event loop and async I/O via", "libuv C API")
+Rel(src, native_libs, "Uses for crypto, HTTP parsing, compression, DNS, i18n, etc.", "C/C++ APIs")
+
+Rel(libuv, os, "Invokes syscalls for I/O, processes, threads", "syscalls")
+Rel(v8, os, "Allocates memory, manages threads", "syscalls")
+
+caption L2 - C4 model Container diagram for Node.js. Shows the major technical building blocks inside the Node.js binary. 
+
+@enduml

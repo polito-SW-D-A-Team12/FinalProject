@@ -1,0 +1,61 @@
+@startuml crypto_cluster_coupling
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName "Helvetica"
+skinparam defaultFontSize 11
+
+skinparam rectangle {
+  RoundCorner 10
+}
+
+rectangle "aes" as aes #E8F0FE
+rectangle "cfrg" as cfrg #E8F0FE
+rectangle "ec" as ec #E8F0FE
+rectangle "rsa" as rsa #E8F0FE
+rectangle "mac" as mac #E8F0FE
+rectangle "ml_dsa" as ml_dsa #E8F0FE
+rectangle "ml_kem" as ml_kem #E8F0FE
+rectangle "chacha20_\npoly1305" as cc #E8F0FE
+
+rectangle "util" as util #FFE8D6
+rectangle "webidl" as webidl #FFE8D6
+
+aes -down-> util
+cfrg -down-> util
+ec -down-> util
+rsa -down-> util
+mac -down-> util
+ml_dsa -down-> util
+ml_kem -down-> util
+cc -down-> util
+
+aes -down-> webidl
+cfrg -down-> webidl
+ec -down-> webidl
+rsa -down-> webidl
+ml_dsa -down-> webidl
+ml_kem -down-> webidl
+
+aes .[#C0392B,thickness=2].. ec : "lift 117"
+aes .[#C0392B,thickness=2].. cfrg : "lift 90"
+aes .[#C0392B,thickness=2].. rsa : "lift 84"
+aes .[#C0392B,thickness=2].. mac : "lift 83"
+cfrg .[#C0392B,thickness=2].. ec : "lift 110"
+cfrg .[#C0392B,thickness=2].. rsa : "lift 79"
+cfrg .[#C0392B,thickness=2].. mac : "lift 70"
+ec .[#C0392B,thickness=2].. rsa : "lift 102"
+ec .[#C0392B,thickness=2].. mac : "lift 91"
+mac .[#C0392B,thickness=2].. rsa : "lift 84"
+ml_dsa .[#C0392B,thickness=2].. ml_kem : "lift 130"
+aes .[#C0392B,thickness=2].. cc : "lift 104"
+
+legend bottom
+  |= Edge |= Meaning |
+  | solid arrow | Direct require() (structural dependency) |
+  | <color:#C0392B>dashed</color> | High logical coupling (lift >= 70), no direct require |
+  | | All nodes are under lib/internal/crypto/ |
+endlegend
+
+title Crypto subsystem - structural vs logical coupling
+
+@enduml
